@@ -78,7 +78,6 @@ function buy(id) {
     // 1. Loop for to the array products to get the item to add to cart
     // 2. Add found product to the cart array
 
-
     const productToAdd = products.find(product => product.id === id);
 
     if (productToAdd) {
@@ -97,15 +96,8 @@ function buy(id) {
     }
 }
 
-// Exercise 2
-// function cleanCart() {
-//     var cart = []
-//     console.log(cart)
-// }
-
-
 // Exercise 3
-function calculateTotal() {
+function calculateTotal() { // función que calcula el total del carro con los descuentos aplicados
     // Calculate total price of the cart using the "cartList" array
     //    const totalCar = cart.reduce((total, product) => {
     //         return total += product.price * product.quantity
@@ -117,20 +109,34 @@ function calculateTotal() {
         totalCar += product.price * product.quantity
     }
     const discountTotal = applyPromotionsCart()
-    console.log(totalCar - discountTotal, "total con descuento")
 
     return totalCar - discountTotal
-} // comprobar con el botón añadido de Calcular total en el cart
+} 
 
 
+//en esta función se calcula el total de descuentos aplicados para restarlos en el total de carro
+function applyPromotionsCart() {    
 
+    let descountTotalOil = 0
+    let descountTotalCupcake = 0
+
+    for (let i = 0; i < cart.length; i++) {
+        const product = cart[i]
+
+        if (product.id === 1 && product.quantity >= 3) {
+            descountTotalOil = (product.price * 0.2) * product.quantity
+        }
+        else if (product.id === 3 && product.quantity >= 10) {
+            descountTotalCupcake = (product.price * 0.3) * product.quantity
+        }
+    }
+    return descountTotalOil + descountTotalCupcake
+}
 
 // Exercise 4
-function applyPromotionsCart() { // para el total del carro con descuentos aplicados
+function applyPromotionsCartforProduct(cart) { // para el total de descuentos por productos   
     // Apply promotions to each item in the array "cart"
-
-
-    //     Per ser un bon e-commerce, ens falta implementar promocions, apartat importantíssim en qualsevol botiga.
+    //  Per ser un bon e-commerce, ens falta implementar promocions, apartat importantíssim en qualsevol botiga.
 
     // Per això, ens ha especificat dos tipus de promocions que vol per al seu e-commerce:
 
@@ -143,28 +149,6 @@ function applyPromotionsCart() { // para el total del carro con descuentos aplic
     // En cas que un producte tingui descompte, s'ha de guardar el preu total amb descompte en el camp: subtotalWithDiscount.
     // Si no s'ha d'aplicar descompte, no fa falta que guardis res.
 
-    let descountTotalOil = 0
-    let descountTotalCupcake = 0
-
-
-    for (let i = 0; i < cart.length; i++) {
-        const product = cart[i]
-
-        if (product.id === 1 && product.quantity >= 3) {
-            descountTotalOil = (product.price * 0.2) * product.quantity
-        }
-        else if (product.id === 3 && product.quantity >= 10) {
-            descountTotalCupcake = (product.price * 0.3) * product.quantity
-        }
-    }
-    console.log(descountTotalOil + descountTotalCupcake, "total del descuento")
-    return descountTotalOil + descountTotalCupcake
-
-}
-
-
-function applyPromotionsCartforProduct(cart) { // para el total con descuentos por productos   
-    //let totalsbyProduct = []
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i]
         let totalForProductWithDiscount = 0
@@ -177,35 +161,21 @@ function applyPromotionsCartforProduct(cart) { // para el total con descuentos p
         else if (product.id === 3 && product.quantity >= 10) {
             totalForProductWithDiscount = product.price * product.quantity * 0.7
 
-        } 
+        }
         else {
-            totalForProductWithDiscount = product.price * product.quantity; // Sin descuento
-        } 
+            totalForProductWithDiscount = product.price * product.quantity; // Sin descuentos
+        }
 
-       product.totalForProductWithDiscount = totalForProductWithDiscount
-    }  
+        product.totalForProductWithDiscount = totalForProductWithDiscount
+    }
     return cart
 }
-
-// applyPromotionsCartforProduct(cart)
-
-// function descountTotalOil(){
-//     let descountTotalOil = 0
-//     for (let i = 0; i < cart.length; i++) {
-//         const product = cart[i]
-
-//         if (product.id === 1 && product.quantity >= 3) {
-//             descountTotalOil = (product.price * 0.2) * product.quantity   
-//         }
-//     }   
-//     return descountTotalOil
-// }  
 
 // Exercise 5
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
 
-    //     Ja has desenvolupat tota la lògica bàsica de l'aplicació, ha arribat el moment de mostrar a l'usuari el carret de la compra.
+    // Ja has desenvolupat tota la lògica bàsica de l'aplicació, ha arribat el moment de mostrar a l'usuari el carret de la compra.
 
     // El codi encarregat de mostrar el carret de la compra en el modal amb id "cartModal", ha d'incloure's dins de la funció printCart(). Et donem ja creada la maquetació de la taula de productes, només caldrà modificar-la per tal que sigui dinàmica.
 
@@ -213,7 +183,6 @@ function printCart() {
     cartModal.innerHTML = " "
 
     cartModal.innerHTML = `
-
 <div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -233,9 +202,7 @@ function printCart() {
 								<th scope="col">Total <small>(with discount)</small></th>
 							</tr>
 						</thead>
-						<tbody id="cart_list">      
-                           		
-							
+						<tbody id="cart_list"> 							
 				`
     const updatedCart = applyPromotionsCartforProduct(cart)
     for (let i = 0; i < updatedCart.length; i++) {
@@ -248,8 +215,7 @@ function printCart() {
             <td>${product.quantity}</td>
             <td>$${product.quantity * product.price}</td> 
             <td>$${product.totalForProductWithDiscount.toFixed(2)}</td> 
-            </tr>         
-           
+            </tr>            
             `
         const cartList = document.getElementById("cart_list");
         cartList.appendChild(row)
@@ -266,8 +232,6 @@ function printCart() {
 					</div>              
                         `
 }
-
-
 
 function cleanCart(updatedCart) {
     var updatedCart = []
@@ -304,13 +268,6 @@ function cleanCart(updatedCart) {
 					</div>  		
 				`
 }
-
-
-
-function updateTotal() {
-    const totalPriceElement = document.getElementById("total_price");    
-}
-
 
 // ** Nivell II **
 
