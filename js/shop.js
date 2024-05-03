@@ -83,17 +83,20 @@ function buy(id) {
     if (productToAdd) {
         // Verificar si el producto ya está en el carrito
         const existingProduct = cart.find(item => item.id === id);
+        
 
         if (existingProduct) {
             // Si el producto ya está en el carrito, incrementar su cantidad            
-            existingProduct.quantity++
-            console.log(cart)
+            existingProduct.quantity++           
+          
         } else {
             // Si el producto no está en el carrito, añadirlo con cantidad 1
             cart.push({ ...productToAdd, quantity: 1 });
-            console.log(cart)
+            
+           
         }
-    }
+        countProductCart(cart) 
+    }      
 }
 
 // Exercise 3
@@ -240,9 +243,8 @@ function printCart() {
     totalContainer.innerHTML = `Total con descuento: $${total.toFixed(2)}`
 }
 
-function cleanCart(updatedCart) {
-    var updatedCart = []
-    console.log(updatedCart)
+function cleanCart() {       
+    cart = []
     const row = document.createElement("tr")
     const cartModal = document.getElementById("cartModal")
     cartModal.innerHTML = " "
@@ -275,6 +277,22 @@ function cleanCart(updatedCart) {
 					</div>  		
 				`
 }
+
+
+//Contador de productos
+
+function countProductCart(cart){     
+    let totalCount = 0
+    for (let i = 0; i < cart.length; i++){
+        totalCount += cart[i].quantity
+    }
+    const count_productElement = document.getElementById("count_product")  
+    count_productElement.textContent = totalCount.toString()
+}
+
+
+
+
 
 // ** Nivell II **
 
