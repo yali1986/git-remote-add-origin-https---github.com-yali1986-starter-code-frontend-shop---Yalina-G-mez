@@ -203,8 +203,24 @@ function printCart() {
 							</tr>
 						</thead>
 						<tbody id="cart_list"> 							
-				`
+                        </tbody>
+                        </table>
+                        <div class="text-center fs-3 bg-white" id="total_price_container">
+                            <!-- Aquí se mostrará el total con descuento -->
+                        </div>
+                        <div class="text-center">
+                            <a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
+                            <a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-primary m-3">Clean Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+
     const updatedCart = applyPromotionsCartforProduct(cart)
+    const cartList = document.getElementById("cart_list")
+    let total = 0
+
+
     for (let i = 0; i < updatedCart.length; i++) {
         const product = updatedCart[i]
         const row = document.createElement("tr");
@@ -217,20 +233,11 @@ function printCart() {
             <td>$${product.totalForProductWithDiscount.toFixed(2)}</td> 
             </tr>            
             `
-        const cartList = document.getElementById("cart_list");
-        cartList.appendChild(row)
+        cartList.appendChild(row);
+        total += product.totalForProductWithDiscount
     }
-    cartModal.innerHTML += `               
-                    </tbody>
-                    </table>
-                    <div class="text-center fs-3 bg-white">
-                    Total con descuento: $<span id="total_price">${calculateTotal()}</span>					
-					</div>
-					<div class="text-center">
-						<a href="checkout.html" class="btn btn-primary m-3">Checkout</a>
-						<a href="javascript:void(0)" onclick="cleanCart()" class="btn btn-primary m-3">Clean Cart</a>
-					</div>              
-                        `
+    const totalContainer = document.getElementById("total_price_container");
+    totalContainer.innerHTML = `Total con descuento: $${total.toFixed(2)}`
 }
 
 function cleanCart(updatedCart) {
