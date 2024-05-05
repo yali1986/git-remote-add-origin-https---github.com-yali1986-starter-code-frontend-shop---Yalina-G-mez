@@ -321,9 +321,51 @@ function removeFromCart(id) {
     countProductCart(cart)    
 }
 
-
-
-
 function open_modal() {
     printCart();
 }
+
+
+//Ex 8 Cal que maquetis la web de manera que tingui una aparença professional.
+
+//Colores primary de los botones 
+var buttons = document.querySelectorAll("button")
+
+buttons.forEach(function(button) {
+    button.classList.add("btn-primary", "text-white")
+})
+
+
+// Crear el botón de retorno al inicio antes del footer
+var button = document.createElement("button")
+button.textContent = "Back to Top"
+button.classList.add("btn", "btn-primary", "mx-auto", "d-flex", "mb-5")
+
+var footer = document.querySelector("footer") // Obtener el footer
+document.body.insertBefore(button, footer) // Insertar el botón justo antes del footer
+
+button.addEventListener("click", function() {  
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+})
+
+// Crear el botón de retorno al inicio antes de section Clothes
+var buttonClothes = document.createElement("button")
+buttonClothes.textContent = "Back to Top"
+buttonClothes.classList.add("btn", "btn-primary", "mx-auto", "d-flex", "mb-5")
+
+var clothes = document.querySelector("#clothes") // Obtener el inicio de section Clothes
+document.body.insertBefore(buttonClothes, clothes) // Insertar el botón justo antes de section Clothes
+
+buttonClothes.addEventListener("click", function() {  
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+})
+
+//Animaciones en el index.html y en el checkout.html
+// Colores primary en algunos elementos del index.html y del checkout.html y del navbar-collapse
+// en el enlace de ShopNow del checkout se agregó volver al index.html	

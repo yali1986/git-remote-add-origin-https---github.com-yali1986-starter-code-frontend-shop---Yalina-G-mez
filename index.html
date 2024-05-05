@@ -7,6 +7,9 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 	<title>ShopNow</title>
+    <!-- Animated Css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,7 +18,8 @@
 	<!-- Fontawesome icons-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 		integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-		crossorigin="anonymous" referrerpolicy="no-referrer" />
+		crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="50">
@@ -34,8 +38,8 @@
 						<a href="javascript:void(0)" class="btn btn-outline-dark flex-center" type="button"
 							data-bs-toggle="modal" data-bs-target="#cartModal" onclick="open_modal()"
 							data-bs-auto-close="outside">
-							<i class="fas fa-shopping-cart me-1"></i> Cart <span
-								class="badge bg-dark text-white ms-1 rounded-pill" id="count_product">0</span>
+							<i class="fas fa-shopping-cart me-1 animate__animated animate__zoomIn"></i> Cart <span
+								class="badge bg-primary text-white ms-1 rounded-pill" id="count_product">0</span>
 						</a>
 					</li>
 				</ul>
@@ -45,13 +49,13 @@
 
 				<ul class="navbar-nav me-auto mb-4 mb-lg-0 ms-lg-5">
 					<li class="nav-item">
-						<a class="nav-link" href="#grocery"><i class="fas fa-shopping-basket"></i> Grocery</a>
+						<a class="nav-link" href="#grocery"><i class="fas fa-shopping-basket text-primary"></i> Grocery</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#beauty"><i class="fas fa-heart"></i> Beauty</a>
+						<a class="nav-link" href="#beauty"><i class="fas fa-heart text-primary"></i> Beauty</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#clothes"><i class="fas fa-tshirt"></i> Clothes</a>
+						<a class="nav-link" href="#clothes"><i class="fas fa-tshirt text-primary"></i> Clothes</a>
 					</li>
 
 				</ul>
@@ -63,14 +67,15 @@
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">IT Academy Shop</h1>
-				<p class="lead fw-normal text-white-50 mb-0">Get up to 50% off Today Only!</p>
+				<h1 class="display-4 fw-bolder text-primary mb-5">IT Academy Shop</h1>
+				<p class="lead fw-normal text-50 mb-0 lead fw-normal text-50 mb-0 animate__animated animate__zoomIn">Get up to 50% off Today Only!</p>
+				
 			</div>
 		</div>
 	</header>
 	<!-- Section-->
 	<section class="pt-5" id="grocery">
-		<h2 class="text-center"><i class="fas fa-shopping-basket pe-3"></i>Grocery</h2>
+		<h2 class="text-center"><i class="fas fa-shopping-basket pe-3 text-primary"></i>Grocery</h2>
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<div class="col mb-5">
@@ -78,7 +83,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Cooking Oil</h5>
+								<h5 class="fw-bolder text-primary">Cooking Oil</h5>
 								$10.5
 							</div>
 						</div>
@@ -93,7 +98,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Pasta</h5>
+								<h5 class="fw-bolder text-primary">Pasta</h5>
 								$6.25
 							</div>
 						</div>
@@ -108,7 +113,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Instant cupcake mixture</h5>
+								<h5 class="fw-bolder text-primary">Instant cupcake mixture</h5>
 								$5
 							</div>
 						</div>
@@ -123,7 +128,7 @@
 		</div>
 	</section>
 	<section class="pt-5" id="beauty">
-		<h2 class="text-center"><i class="fas fa-heart pe-3"></i>Beauty</h2>
+		<h2 class="text-center"><i class="fas fa-heart pe-3 text-primary"></i>Beauty</h2>
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<div class="col mb-5">
@@ -131,7 +136,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">All-in-1</h5>
+								<h5 class="fw-bolder text-primary">All-in-1</h5>
 								$260
 							</div>
 						</div>
@@ -146,7 +151,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Zero makeup kit</h5>
+								<h5 class="fw-bolder text-primary">Zero makeup kit</h5>
 								$20.5
 							</div>
 						</div>
@@ -161,7 +166,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Lip tints</h5>
+								<h5 class="fw-bolder text-primary">Lip tints</h5>
 								$12.75
 							</div>
 						</div>
@@ -176,7 +181,7 @@
 		</div>
 	</section>
 	<section class="pt-5" id="clothes">
-		<h2 class="text-center"><i class="fas fa-tshirt pe-3"></i>Clothes</h2>
+		<h2 class="text-center "><i class="fas fa-tshirt pe-3 text-primary"></i>Clothes</h2>
 		<div class="container px-4 px-lg-5 mt-5">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 				<div class="col mb-5">
@@ -184,7 +189,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Lawn dress</h5>
+								<h5 class="fw-bolder text-primary">Lawn dress</h5>
 								$15
 							</div>
 						</div>
@@ -199,7 +204,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Lawn-chiffon combo</h5>
+								<h5 class="fw-bolder text-primary">Lawn-chiffon combo</h5>
 								$19.99
 							</div>
 						</div>
@@ -214,7 +219,7 @@
 						<img class="card-img-top" src="./images/product.svg" alt="..." />
 						<div class="card-body p-4">
 							<div class="text-center">
-								<h5 class="fw-bolder">Toddler Frock</h5>
+								<h5 class="fw-bolder text-primary">Toddler Frock</h5>
 								$9.99
 							</div>
 						</div>
