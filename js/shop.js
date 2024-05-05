@@ -119,6 +119,7 @@ function calculateTotal() { // función que calcula el total del carro con los d
 
 //en esta función se calcula el total de descuentos aplicados para restarlos en el total de carro
 function applyPromotionsCart() {    
+    removeFromCart(id)
 
     let descountTotalOil = 0
     let descountTotalCupcake = 0
@@ -171,6 +172,7 @@ function applyPromotionsCartforProduct(cart) { // para el total de descuentos po
 
         product.totalForProductWithDiscount = totalForProductWithDiscount
     }
+    
     return cart
 }
 
@@ -201,6 +203,7 @@ function printCart() {
 								<th scope="col">Product</th>
 								<th scope="col">Price</th>
 								<th scope="col">Qty.</th>
+								<th scope="col">Delete Product</th>
                                 <th scope="col">Total</th>
 								<th scope="col">Total <small>(with discount)</small></th>
 							</tr>
@@ -232,7 +235,8 @@ function printCart() {
             <th scope="row">${product.name}</th>
             <td>$${product.price}</td>
             <td>${product.quantity}</td>
-            <td>$${product.quantity * product.price}</td> 
+            <td><button onclick="removeFromCart(${product.id})">-</button></td> 
+            <td>$${product.quantity * product.price}</td>            
             <td>$${product.totalForProductWithDiscount.toFixed(2)}</td> 
             </tr>            
             `
@@ -243,7 +247,8 @@ function printCart() {
     totalContainer.innerHTML = `Total con descuento: $${total.toFixed(2)}`
 }
 
-function cleanCart() {       
+
+function cleanCart(id) {       
     cart = []
     const row = document.createElement("tr")
     const cartModal = document.getElementById("cartModal")
@@ -276,30 +281,48 @@ function cleanCart() {
 						<a href="checkout.html" class="btn btn-primary m-3">Checkout</a>						
 					</div>  		
 				`
+                removeFromCart(id)
 }
 
 
 //Contador de productos
-
 function countProductCart(cart){     
     let totalCount = 0
     for (let i = 0; i < cart.length; i++){
         totalCount += cart[i].quantity
     }
     const count_productElement = document.getElementById("count_product")  
-    count_productElement.textContent = totalCount.toString()
+    count_productElement.textContent = totalCount.toString()   
 }
-
-
-
 
 
 // ** Nivell II **
 
 // Exercise 7
-function removeFromCart(id) {
+// restar productes del carret.
 
+// Has de completar la funció removeFromCart(), que rep l'identificador del producte per al qual s'ha de decrementar la seva quantitat en una unitat.
+
+// Recorda que si la quantitat del producte a decrementar és 1, has d'eliminar-lo del carret, no reduir la seva quantitat a 0.
+
+// No oblidis actualitzar les promocions.
+function removeFromCart(id) {    
+           
+    const index = cart.findIndex(product => product.id === id)
+    if (index !== -1) {
+        if (cart[index].quantity > 1) {            
+            cart[index].quantity--
+
+        } else {            
+            cart.splice(index, 1)
+        }       
+    }   
+    printCart()
+    countProductCart(cart)    
 }
+
+
+
 
 function open_modal() {
     printCart();
